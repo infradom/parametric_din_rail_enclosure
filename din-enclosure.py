@@ -374,9 +374,9 @@ def usb_cutout(workplane, x, y, z, extrude):
 if board1.usb_height is None: usb_front_cutout = dummy_cutout
 else: usb_front_cutout = usb_cutout("ZX", DIN_DEEP_HIGH + board1.usb_height + board1.thickness/2 - board1.mount_height, DIN_HEIGHT/2 - WAGO_LIP_LENGTH, CASE_WIDTH/2+b1_carrier_height/2 - board1.usb_offset, -CASE_THICKNESS)
 if board2.usb_height is None: usb_upper_cutout = dummy_cutout
-else: usb_upper_cutout = usb_cutout("XZ", CASE_THICKNESS+board2.width/2+board2.usb_offset,  DIN_HEIGHT/2, CASE_THICKNESS+board2.usb_height+board2.mount_height+board2.thickness, CASE_THICKNESS )
+else: usb_upper_cutout = usb_cutout("XZ", CASE_THICKNESS+board2.width/2+board2.usb_offset,  DIN_HEIGHT/2, CASE_THICKNESS+board2.usb_height+board2.mount_height+board2.thickness/2, CASE_THICKNESS )
 if board3.usb_height is None: usb_lower_cutout = dummy_cutout
-else: usb_lower_cutout = usb_cutout("XZ",CASE_THICKNESS+board3.width/2+board3.usb_offset, -DIN_HEIGHT/2, CASE_THICKNESS+board3.usb_height+board3.mount_height+board3.thickness, -CASE_THICKNESS)
+else: usb_lower_cutout = usb_cutout("XZ",CASE_THICKNESS+board3.width/2+board3.usb_offset, -DIN_HEIGHT/2, CASE_THICKNESS+board3.usb_height+board3.mount_height+board3.thickness/2, -CASE_THICKNESS)
 
 
 
