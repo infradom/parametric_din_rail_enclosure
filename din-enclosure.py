@@ -1,3 +1,4 @@
+# copyright @infradom
 # ======================= component class declarations ========
 
 from dataclasses import dataclass
