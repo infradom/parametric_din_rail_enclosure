@@ -1,5 +1,11 @@
 CONFIG_NAME = "dual"
 
+"""
+This configuration accepts an RS485 board in the front slot (board1), and can have processor boards in the horizontal slots:
+- an ESP32-C3-zero board in the board2 position
+- a lolin S3 mini board (or similar) in the board3 position
+There is only one row of 2 wagos (upper wago row)
+"""
 from din_declarations import *    
 
 # ======================================== PARAMETERS ======================================
