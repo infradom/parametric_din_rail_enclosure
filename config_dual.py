@@ -21,7 +21,7 @@ board3 = Board("bottom", board_width=26, length=35, thickness=2.0, usb_height = 
                          jst_extrawidth_right = 1.0)
 
     
-
+BRAND             = "@infradom"
 
 MODULE_NAME       =  None # "modbus1"
 NR_WAGO_TOP       =  2    # number of wago 221 at top

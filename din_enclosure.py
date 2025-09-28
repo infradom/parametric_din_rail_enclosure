@@ -343,7 +343,7 @@ board1_ledcarrier = ledcarrier(board1)
 
 # ========================== case text ======================================
 
-text_brand  = cq.Workplane("YX").center(0,12).text("@infradom", 8, -0.3)
+text_brand  = cq.Workplane("YX").center(0,12).text(BRAND, 8, -0.3)
 if MODULE_NAME: text_name = cq.Workplane("YZ", (DIN_DEEP_HIGH, -DIN_NARROW_HEIGHT/2+2.5, 5)).text(MODULE_NAME, 6, -0.3, kind="bold", halign="left")
 else: text_name = dummy_cutout
 
