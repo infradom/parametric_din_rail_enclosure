@@ -12,7 +12,7 @@ board1 = Board("front",  board_width=16,   length=43.4, thickness=2.0, usb_heigh
 board2 = Board("top",    board_width=18,   length=24, thickness=2.0, usb_height = 1.8,  mount_height = 1.5, # 23.2 length for C3 zero; 24 length for S3 zerp
                          jst_extrawidth_right = 2.0)
 board3 = Board("bottom", board_width=26, length=35, thickness=2.0, usb_height = 1.8,  mount_height = 2.5, # mini C3 or S3 board
-                         jst_extrawidth_left = 0.0)
+                         jst_extrawidth_right = 1.0)
 
     
 
