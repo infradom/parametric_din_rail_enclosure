@@ -31,7 +31,7 @@ config = Config (
                    ), 
     board2 = Board("top", # lolin S3 mini board (or equivalent)
                    board_width=26,
-                   length=35,
+                   length=34.5,
                    thickness=2.0,
                    usb_height = 1.8, 
                    mount_height = 2.5, # assuming no jst connector that needs mount height
