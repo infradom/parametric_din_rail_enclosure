@@ -1,3 +1,10 @@
+# ==========================================================================================
+# This is NOT the config file !!
+# Do not modify this file, actual configuration resides in config.py
+# Please adapt config.py to meet your needs
+#
+# Copyright @infradom
+# ===========================================================================================
 
 from dataclasses import dataclass, field
 
@@ -30,8 +37,12 @@ class Board:
     @property
     def usb_offset(self): return (self.jst_extrawidth_left - self.jst_extrawidth_right)/2
 
+# 
+# 
+# ============================= DO NOT MODIFY THESE DEFAULTS; they can be overridden in the config.py file
+#
 @dataclass
-class Config:
+class Config: # DO NOTY MODIFY !!! adapt corresponding entries in config.py
     CONFIG_NAME:        str       = "modbus1"
     board1:   callable = field(default_factory = lambda: Board("front",  board_width=16,   length=43.4, thickness=2.0, usb_height = None, mount_height = 12, # vertical board behind front
                          leds= [ Led( x=1.4, y=21.0, txt=""), Led( x=3.8, y=21.0, txt="")] )   )              # vertical board behind front
