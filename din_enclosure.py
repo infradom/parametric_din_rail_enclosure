@@ -235,11 +235,14 @@ def generate_enclosure(c: Config):
                     .union(board_fix(c.board3, c.board3.width + c.CASE_THICKNESS -3+c.board3.jst_extrawidth_right, -c.DIN_HEIGHT/2+c.CASE_THICKNESS+c.board3.length, True))
                     .union(board_fix(c.board3, c.CASE_THICKNESS +3+c.board3.jst_extrawidth_left, -c.DIN_HEIGHT/2+c.CASE_THICKNESS+c.board3.length, True))
                   )
-    
-    wago_support_upper = ( cq.Workplane("XY").box(c.CASE_THICKNESS, c.WAGO_LENGTH, c.CASE_WIDTH-2*c.CASE_THICKNESS)
-        .translate((WAGO_POS_DEPTH_UPPER - c.CASE_THICKNESS/2, c.DIN_HEIGHT/2-c.WAGO_LENGTH/2 , c.CASE_WIDTH/2)) )
-    wago_support_lower = ( cq.Workplane("XY").box(c.CASE_THICKNESS, c.WAGO_LENGTH, c.CASE_WIDTH-2*c.CASE_THICKNESS)
-        .translate((WAGO_POS_DEPTH_LOWER - c.CASE_THICKNESS/2, -c.DIN_HEIGHT/2+c.WAGO_LENGTH/2 , c.CASE_WIDTH/2)) )
+    if c.NR_WAGO_TOP >0:
+        wago_support_upper = ( cq.Workplane("XY").box(c.CASE_THICKNESS, c.WAGO_LENGTH, c.CASE_WIDTH-2*c.CASE_THICKNESS)
+            .translate((WAGO_POS_DEPTH_UPPER - c.CASE_THICKNESS/2, c.DIN_HEIGHT/2-c.WAGO_LENGTH/2 , c.CASE_WIDTH/2)) )
+    else: wago_support_upper = dummy_cutout
+    if c.NR_WAGO_BOTTOM >0:
+        wago_support_lower = ( cq.Workplane("XY").box(c.CASE_THICKNESS, c.WAGO_LENGTH, c.CASE_WIDTH-2*c.CASE_THICKNESS)
+            .translate((WAGO_POS_DEPTH_LOWER - c.CASE_THICKNESS/2, -c.DIN_HEIGHT/2+c.WAGO_LENGTH/2 , c.CASE_WIDTH/2)) )
+    else: wago_support_lower = dummy_cutout
     
     if c.NR_WAGO_TOP == 0: wago_height_t = 0 
     else: wago_height_t = c.WAGO_HEIGHT + WAGO_FIX_HEIGHT
