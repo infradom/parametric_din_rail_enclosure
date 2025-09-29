@@ -1,14 +1,16 @@
+
+
 """
 This configuration accepts an RS485 board in the front slot (board1), and can have processor boards in the horizontal slots:
-- an ESP32-C3-zero board in the board2 position
-- a lolin S3 mini board (or similar) in the board3 position
-There is only one row of 2 wagos (upper wago row)
+- an ESP32-C3-zero board in the board3 position
+- a lolin S3 mini board (or similar) in the board2 position
+There is only one row of 2 wagos (lower wago row)
 """
 
 # ============================ extend path with ============================================
 
 import sys
-sys.path.append('../') # library might be in the higher directory
+sys.path.append('../')
 from din_declarations import *    
 
 
@@ -18,39 +20,39 @@ from din_declarations import *
 # currently only designed for 3 boards
 
 config = Config (
-    CONFIG_NAME     = "dual",
+    CONFIG_NAME     = "dual2",
     board1 = Board("front", # vertical board behind front
-                   board_width=16,   
-                   length=43.4, 
-                   thickness=2.0, 
-                   usb_height = None, 
+                   board_width=16,
+                   length=43.4,
+                   thickness=2.0,
+                   usb_height = None,
                    mount_height = 12, # vertical board behind front
                    leds= [ Led( x=1.4, y=21.0, txt=""), Led( x=3.8, y=21.0, txt="")] 
-                   ),                 
-    board2 = Board("top", # esp32-c3 zero board
-                   board_width=18, 
-                   length=24, 
-                   thickness=2.0, 
-                   usb_height = 1.8,  
-                   mount_height = 1.5, # extra low mount height due to jst connector
-                   jst_extrawidth_right = 2.0 # jst XH connector
-                   ),
-    board3 = Board("bottom",    # lolin S2 or S3 mini board (or similar)
+                   ), 
+    board2 = Board("top", # lolin S3 mini board (or equivalent)
                    board_width=26,
-                   length=35, 
-                   thickness=2.0, 
+                   length=35,
+                   thickness=2.0,
+                   usb_height = 1.8, 
+                   mount_height = 2.5, # assuming no jst connector that needs mount height
+                   jst_extrawidth_left = 1.4 # space for button
+                   ),
+    board3 = Board("bottom", # esp32-c3-zero board
+                   board_width=18,
+                   length=24, 
+                   thickness=2.0,
                    usb_height = 1.8,
-                   mount_height = 2.5, 
-                   jst_extrawidth_right = 1.0 # space for the reset button
+                   mount_height = 1.5, # extra low for jst xh connector space
+                   jst_extrawidth_right = 2.0 # jst xh connector
                    ),
 
     BRAND             = "@infradom",
  
     MODULE_NAME       =  None, # "modbus1"
-    NR_WAGO_TOP       =  2,    # number of wago 221 at top
-    NR_WAGO_BOTTOM    =  0,    # number of wago 221 at bottom
-    WAGO_UPPER_TEXT   =  ["A", "B"],  # single character strings recommended
-    WAGO_LOWER_TEXT   =  [], #["5", "0", ] # single character strings recommended
+    NR_WAGO_TOP       =  0,    # number of wago 221 at top
+    NR_WAGO_BOTTOM    =  2,    # number of wago 221 at bottom
+    WAGO_UPPER_TEXT   =  [ ],  # single character strings recommended
+    WAGO_LOWER_TEXT   =  ["A", "B"], #["5", "0", ] # single character strings recommended
     CASE_WIDTH        = 18,    # standard unit = 18 mm - unless wago count makes it wider
     CASE_THICKNESS    =  2,    # untested if you modify this
 
@@ -93,14 +95,10 @@ config = Config (
 # ======================================= END of the config part =================================
 import cadquery as cq
 import din_enclosure
-if 'show_object' not in globals(): # running outside cq-editor
+if 'show_object' not in globals(): # if running outside cq-editor
     def show_object(*args, **kwargs):
         pass
 
 din_enclosure.generate_enclosure(config)
 din_enclosure.show_object = show_object
 din_enclosure.show()
-
-
-
-
