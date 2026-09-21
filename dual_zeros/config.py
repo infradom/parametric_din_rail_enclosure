@@ -35,7 +35,7 @@ config = Config (
                    thickness=2.0,
                    usb_height = 1.8, 
                    mount_height = 2.5, # no jst connector
-                   jst_extrawidth_right = 0.0 # space for jst connector
+                   jst_extrawidth_right = 0.0 # no space for jst connector
                    ),
     board3 = Board("bottom", # esp32-c3-zero board
                    board_width=18,
@@ -43,7 +43,7 @@ config = Config (
                    thickness=2.0,
                    usb_height = 1.8,
                    mount_height = 1.5, # extra low for jst xh connector space
-                   jst_extrawidth_right = 2.0 # jst xh connector
+                   jst_extrawidth_left = 2.0 # jst xh connector
                    ),
 
     BRAND             = "@infradom",
